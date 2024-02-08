@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.btn {
+    @apply rounded-xl h-10 px-4 grid place-content-center font-semibold transition-all;
+}
+
+.btn-primary {
+    @apply bg-primary text-white;
+}
+
+.btn-danger {
+    @apply bg-red-500 text-white;
+}
