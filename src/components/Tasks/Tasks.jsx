@@ -1,34 +1,11 @@
 import "./Tasks.css";
 import Filter from "../../ui/Filter";
 import SingleTask from "../SingleTask/SingleTask";
-
-
-const tasks = [
-    {
-        id: 1,
-        title: "hhhhhhhhhhhhhhh",
-        description: 'pppppppppppppppp',
-        isCompleted: false,
-        piority: 'medium'
-        
-    },
-    {
-        id: 2,
-        title: "hhhhhhhhhhhhhhh",
-        description: 'pppppppppppppppp',
-        isCompleted: false,
-        piority: 'medium'
-    },
-    {
-        id: 3,
-        title: "hhhhhhhhhhhhhhh",
-        description: 'pppppppppppppppp',
-        isCompleted: false,
-        piority: 'medium'
-    },
-]
+import { useSelector } from "react-redux";
 
 const Tasks = () => {
+    const tasks = useSelector((state) => state.tasks);
+    
     return (
         <section className="tasks-section">
             <h3 className="tasks-count">Total Tasks Count: 0</h3>
