@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { ChevronUpDownIcon } from '@heroicons/react/20/solid'
 
@@ -10,11 +10,6 @@ const people = [
 
 export default function Filter() {
   const [selected, setSelected] = useState(people[0])
-
-  useEffect(() => {
-    console.log(selected)
-
-  }, [selected])
 
   return (
       <Listbox value={selected} onChange={setSelected}>

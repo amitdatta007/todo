@@ -1,36 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
-const initialState = [
-    {
-        id: 1,
-        title: "hhhhhhhhhhhhhhh",
-        description: 'pppppppppppppppp',
-        isCompleted: false,
-        piority: 'medium'
+import uniqid from 'uniqid';
 
-    },
-    {
-        id: 2,
-        title: "hhhhhhhhhhhhhhh",
-        description: 'pppppppppppppppp',
-        isCompleted: false,
-        piority: 'medium'
-    },
-    {
-        id: 3,
-        title: "hhhhhhhhhhhhhhh",
-        description: 'pppppppppppppppp',
-        isCompleted: false,
-        piority: 'medium'
-    },
+const initialState = [
+    
 ];
 
 const tasksSlice = createSlice({
     name: 'tasks',
     initialState,
     reducers: {
+        addTask: (state, { payload }) => {
+            state.push({id: uniqid(), ...payload, isCompleted: false})
+        }
 
     }
 
 });
+
+export const { addTask } = tasksSlice.actions;
 
 export default tasksSlice.reducer;

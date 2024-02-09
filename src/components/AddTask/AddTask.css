@@ -1,0 +1,6 @@
+.label{
+    @apply mb-2 text-secondary
+}
+.input-field{
+    @apply border-2 border-secondary/20 text-secondary rounded-xl px-4 py-2 text-sm md:text-base focus:outline-none placeholder:text-secondary/20
+}
