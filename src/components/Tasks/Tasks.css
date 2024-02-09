@@ -1,0 +1,29 @@
+.tasks-section{
+    @apply mt-4
+}
+.tasks-count{
+    @apply text-xl font-medium text-secondary
+}
+.btn_area{
+    @apply mt-4 flex justify-between items-center
+}
+
+.tasks{
+    @apply mt-6 mx-0 md:mx-5 xl:mx-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 xl:gap-12
+}
+
+.tasks_by_status{
+    @apply flex flex-col gap-4
+}
+
+.tasks_info{
+    @apply bg-primary/20 rounded-xl flex justify-between items-center p-4 md:p-6 xl:p-8
+}
+
+.tasks_info h3{
+    @apply text-lg md:text-xl font-semibold text-secondary
+}
+
+.count {
+    @apply bg-primary text-white text-lg md:text-xl font-semibold px-3 py-1 rounded-lg
+}

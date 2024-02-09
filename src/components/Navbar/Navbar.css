@@ -1,5 +1,5 @@
 nav{
-    @apply flex flex-col gap-4
+    @apply flex flex-col gap-4 border-b-2 border-secondary/20 py-4
 }
 
 .navbar{
