@@ -1,10 +1,13 @@
 /* eslint-disable react/prop-types */
 import { PencilSquareIcon, TrashIcon } from '@heroicons/react/24/outline';
 import './SingleTask.css';
+import { useDispatch } from 'react-redux';
+import { deleteTask } from '../../app/features/tasks/tasksSlice';
 
 const SingleTask = ({ task }) => {
+    const { id,  title, description } = task;
 
-    const { title, description } = task;
+    const dispatch = useDispatch();
 
     return (
         <div className='single-task'>
@@ -15,7 +18,7 @@ const SingleTask = ({ task }) => {
                     <button>
                         <PencilSquareIcon className='text-primary h-9 w-9' />
                     </button>
-                    <button>
+                    <button onClick={() => dispatch(deleteTask(id))}>
                         <TrashIcon className='text-red-500 h-9 w-9' />
                     </button>
                 </div>

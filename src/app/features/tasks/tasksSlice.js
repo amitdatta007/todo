@@ -1,22 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
-import uniqid from 'uniqid';
+import { v4 as uuid } from 'uuid';
 
-const initialState = [
-    
-];
+const initialState = {
+    tasks: []
+}
 
 const tasksSlice = createSlice({
     name: 'tasks',
     initialState,
     reducers: {
         addTask: (state, { payload }) => {
-            state.push({id: uniqid(), ...payload, isCompleted: false})
+            state.tasks.push({ id: uuid(), ...payload, isCompleted: false })
+        },
+        deleteTask: (state, { payload }) => {
+            state.tasks = state.tasks.filter((task) => task.id !== payload)
         }
 
     }
 
 });
 
-export const { addTask } = tasksSlice.actions;
+export const { addTask, deleteTask } = tasksSlice.actions;
 
 export default tasksSlice.reducer;
