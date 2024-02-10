@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    tasks: JSON.parse(localStorage.getItem('tasks')).tasks
+    tasks: JSON.parse(localStorage.getItem('tasks')) || []
 }
 
 const tasksSlice = createSlice({
@@ -13,7 +13,7 @@ const tasksSlice = createSlice({
                 state.tasks.push({ id: 1, isCompleted: false, ...payload });
             } else {
                 const lastElement = state.tasks.at(-1);
-                state.tasks.push({ id: lastElement.id + 1, status: 'pending', ...payload })
+                state.tasks.push({ id: lastElement.id + 1, isCompleted: false, ...payload })
             }
         },
         deleteTask: (state, { payload }) => {

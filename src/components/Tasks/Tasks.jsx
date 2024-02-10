@@ -2,17 +2,23 @@ import "./Tasks.css";
 import Filter from "../../ui/Filter";
 import SingleTask from "../SingleTask/SingleTask";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddTask from "../AddTask/AddTask";
+import filterer from "../../utils/filter";
 
 const Tasks = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [incompleteTask, setIncompleteTask] = useState([]);
+    const [completedTasks, setCompletedTasks] = useState([]);
 
     const tasks = useSelector((state) => state.tasks.tasks);
+    const { filter, search } = useSelector((state) => state.filters);
 
-    const completedTasks = tasks.filter((task) => !!task.isCompleted)
-    const incompleteTask = tasks.filter((task) => !task.isCompleted)
-    
+    useEffect(() => {
+        setIncompleteTask(filterer(tasks.filter((task) => !task.isCompleted), filter))
+        setCompletedTasks(filterer(tasks.filter((task) => !!task.isCompleted), filter))
+    }, [tasks, filter])
+
 
     return (
         <section className="tasks-section">
@@ -29,7 +35,8 @@ const Tasks = () => {
                         <div className="count">{incompleteTask.length}</div>
                     </div>
                     {
-                        incompleteTask.sort((a, b) => (a.id - b.id)).map((task) => <SingleTask key={task.id} task={task} />)
+
+                        incompleteTask.filter((task) => task.title.toLowerCase().includes(search.toLowerCase())).map((task) => <SingleTask key={task.id} task={task} />)
                     }
                 </div>
                 <div className="tasks_by_status">
@@ -38,7 +45,7 @@ const Tasks = () => {
                         <div className="count">{completedTasks.length}</div>
                     </div>
                     {
-                        completedTasks.sort((a, b) => (a.id - b.id)).map((task) => <SingleTask key={task.id} task={task} />)
+                        completedTasks.filter((task) => task.title.toLowerCase().includes(search.toLowerCase())).map((task) => <SingleTask key={task.id} task={task} />)
                     }
                 </div>
             </div>

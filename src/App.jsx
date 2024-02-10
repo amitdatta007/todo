@@ -5,7 +5,7 @@ import Tasks from "./components/Tasks/Tasks";
 import { useEffect } from "react";
 
 function App() {
-  const tasks = useSelector(state => state.tasks);
+  const tasks = useSelector(state => state.tasks.tasks);
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
