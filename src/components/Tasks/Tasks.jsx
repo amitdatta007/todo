@@ -7,7 +7,12 @@ import AddTask from "../AddTask/AddTask";
 
 const Tasks = () => {
     const [isOpen, setIsOpen] = useState(false);
+
     const tasks = useSelector((state) => state.tasks.tasks);
+
+    const completedTasks = tasks.filter((task) => !!task.isCompleted)
+    const incompleteTask = tasks.filter((task) => !task.isCompleted)
+    
 
     return (
         <section className="tasks-section">
@@ -20,20 +25,20 @@ const Tasks = () => {
             <div className="tasks">
                 <div className="tasks_by_status">
                     <div className="tasks_info">
-                        <h3>Incompleted</h3>
-                        <div className="count">0</div>
+                        <h3>Incomplete</h3>
+                        <div className="count">{incompleteTask.length}</div>
                     </div>
                     {
-                        tasks.map((task) => <SingleTask key={task.id} task={task} />)
+                        incompleteTask.sort((a, b) => (a.id - b.id)).map((task) => <SingleTask key={task.id} task={task} />)
                     }
                 </div>
                 <div className="tasks_by_status">
                     <div className="tasks_info">
                         <h3>Completed</h3>
-                        <div className="count">0</div>
+                        <div className="count">{completedTasks.length}</div>
                     </div>
                     {
-                        tasks.map((task) => <SingleTask key={task.id} task={task} />)
+                        completedTasks.sort((a, b) => (a.id - b.id)).map((task) => <SingleTask key={task.id} task={task} />)
                     }
                 </div>
             </div>

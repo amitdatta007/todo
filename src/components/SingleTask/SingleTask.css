@@ -3,7 +3,7 @@
 }
 
 .title{
-    @apply text-xl md:text-2xl font-semibold text-secondary
+    @apply text-xl md:text-2xl font-semibold
 }
 .description{
     @apply text-sm md:text-base font-medium text-secondary
